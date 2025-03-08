@@ -1,8 +1,8 @@
 ---
-name: Pull Request
-about: Submit changes to the project
+name: "Pull Request"
+about: "Submit changes to the project"
 title: "[PR] Short title describing the change"
-labels: 
+labels: ["pull request"]
 ---
 
 ## 📝 Description
