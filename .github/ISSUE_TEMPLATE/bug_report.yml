@@ -1,11 +1,14 @@
 name: "🐛 Bug Report"
 description: "Report an issue with the project"
 title: "[Bug]: "
-labels: ["bug"]
+labels:
+  - bug
 body:
   - type: markdown
     attributes:
-      value: "## 🐞 Describe the Bug\nA clear and concise description of what the bug is."
+      value: |
+        ## 🐞 Describe the Bug
+        A clear and concise description of what the bug is.
 
   - type: textarea
     id: bug-description
@@ -13,12 +16,16 @@ body:
       label: "What happened?"
       description: "Provide details about the issue"
       placeholder: "Explain the bug here..."
-      value: "Steps to reproduce:\n1. ...\n2. ...\n3. ..."
+      value: |
+        Steps to reproduce:
+        1. ...
+        2. ...
+        3. ...
 
   - type: textarea
     id: expected-behavior
     attributes:
-      label: "Expected behavior"
+      label: "Expected Behavior"
       description: "What should have happened?"
       placeholder: "Describe what you expected to happen."
       value: "Expected result: ..."
@@ -29,5 +36,3 @@ body:
       label: "System Information"
       description: "Provide details about your system (OS, Browser, etc.)."
       placeholder: "OS: Windows 11, Browser: Chrome 120"
-``
-
