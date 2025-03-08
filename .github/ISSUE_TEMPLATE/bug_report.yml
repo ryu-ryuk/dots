@@ -16,11 +16,6 @@ body:
       label: "What happened?"
       description: "Provide details about the issue"
       placeholder: "Explain the bug here..."
-      value: |
-        Steps to reproduce:
-        1. ...
-        2. ...
-        3. ...
 
   - type: textarea
     id: expected-behavior
@@ -28,7 +23,6 @@ body:
       label: "Expected Behavior"
       description: "What should have happened?"
       placeholder: "Describe what you expected to happen."
-      value: "Expected result: ..."
 
   - type: input
     id: system-info

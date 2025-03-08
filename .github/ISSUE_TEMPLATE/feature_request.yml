@@ -1,6 +1,6 @@
 name: "✨ Feature Suggestion"
 description: "Suggest a new feature for the project"
-title: "[FEATURE] Short title of the feature"
+title: "[FEATURE]: "
 labels:
   - enhancement
 body:
