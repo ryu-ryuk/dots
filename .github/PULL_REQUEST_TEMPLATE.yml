@@ -1,29 +1,35 @@
----
 name: "Pull Request"
-about: "Submit changes to the project"
-title: "[PR] Short title describing the change"
+description: "Submit changes to the project"
+title: "[PR]: "
 labels: ["pull request"]
----
+body:
+  - type: markdown
+    attributes:
+      value: "## 📝 Description\nBriefly describe the purpose and impact of this PR."
 
-## 📝 Description
-<!-- Briefly describe the purpose and impact of this PR -->
+  - type: checkboxes
+    id: changes
+    attributes:
+      label: "🔍 Changes"
+      options:
+        - label: "Fixes #[Issue Number] (if applicable)"
+        - label: "Adds feature X"
+        - label: "Refactors Y"
+        - label: "Updates documentation"
 
-## 🔍 Changes
-- [ ] Fixes #[Issue Number] (if applicable)
-- [ ] Adds feature X
-- [ ] Refactors Y
-- [ ] Updates documentation
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "✅ Checklist"
+      options:
+        - label: "Code is tested and works as expected"
+        - label: "No hardcoded credentials or sensitive data"
+        - label: "Documentation updated (if applicable)"
+        - label: "Follows project coding standards"
+        - label: "Commits are small and focused"
+        - label: "Added/updated tests (if applicable)"
 
-## ✅ Checklist
-- [ ] Code is tested and works as expected
-- [ ] No hardcoded credentials or sensitive data
-- [ ] Documentation updated (if applicable)
-- [ ] Follows project coding standards
-- [ ] Commits are small and focused
-- [ ] Added/updated tests (if applicable)
+  - type: markdown
+    attributes:
+      value: "### 🔍 Review Process\n- PRs must be made to the `dev` branch\n- At least two members must approve the PR\n- CI/CD checks must pass\n- Open to feedback and improvements"
 
-### 🔍 Review Process
-- PRs must be made to the `dev` branch  
-- At least two members must approve the PR  
-- CI/CD checks must pass  
-- Open to feedback and improvements  
