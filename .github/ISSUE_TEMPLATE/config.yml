@@ -1,10 +1,8 @@
 blank_issues_enabled: false
-contact_links: [  
+contact_links: 
   - name: Read our Wiki first!
     url: https://google.com
     about: Please check the documentation before opening an issue.
   - name: Join Our Discord
     url: 1.1.1.1
     about: Need help? Chat with us on Discord!
-]
-
