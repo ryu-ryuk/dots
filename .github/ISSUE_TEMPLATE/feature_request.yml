@@ -1,16 +1,44 @@
-name: "Suggesting a feature?"
-description: "Report an issue with the project"
-title: "[Bug]: "
-labels: [bug]
+name: "✨ Feature Suggestion"
+description: "Suggest a new feature for the project"
+title: "[FEATURE] Short title of the feature"
+labels:
+  - enhancement
 body:
   - type: markdown
     attributes:
-      value: "## 🐞 Describe the Bug\nA clear and concise description of what the bug is."
+      value: |
+        ## Feature Proposal  :?
+        <!-- Briefly describe the feature and its purpose -->
+
   - type: textarea
-    id: what-happened
+    id: feature-proposal
     attributes:
-      label: "What happened?"
-      description: "Provide details about the issue"
-      placeholder: "Explain the bug here..."
+      label: "Feature Proposal"
+      description: "Provide a detailed description of the feature."
+      placeholder: "Describe the feature here..."
+      value: ""
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: "Possible Implementation"
+      description: "Suggest how this feature could be implemented, including any relevant technologies or approaches."
+      placeholder: "Describe the implementation details here..."
+      value: ""
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: "Use Case"
+      description: "Explain why this feature is needed and how it benefits users."
+      placeholder: "Describe the use case here..."
+      value: ""
+
+  - type: textarea
+    id: visual-references
+    attributes:
+      label: "Visual References (if applicable)"
+      description: "Attach screenshots or links that help illustrate the feature."
+      placeholder: "Paste links or image references here..."
       value: ""
 

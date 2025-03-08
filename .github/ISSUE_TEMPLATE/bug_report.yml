@@ -35,4 +35,4 @@ body:
     attributes:
       label: "System Information"
       description: "Provide details about your system (OS, Browser, etc.)."
-      placeholder: "OS: Windows 11, Browser: Chrome 120"
+      placeholder: "OS: Arch Linux, Browser: Zen"
