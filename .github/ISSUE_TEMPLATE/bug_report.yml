@@ -52,7 +52,10 @@ body:
       label: "System Information"
       description: "Provide details about your environment (OS, browser, dependencies, etc.)."
       placeholder: "OS: ..., Browser: ..., Dependencies: ..."
-
+      value: |
+        label: "OS: "
+        label: "Browser: "
+        label: "Dependencies: "
   - type: textarea
     id: error-logs
     attributes:
