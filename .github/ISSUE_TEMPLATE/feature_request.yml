@@ -7,33 +7,66 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 🚀 Feature Proposal  
-        Provide a detailed description of the feature.
+        ## 🚀 Feature Proposal
+        Provide a clear and concise description of the feature.
 
   - type: textarea
     id: feature-proposal
     attributes:
-      label: "Feature Proposal"
-      description: "What is the feature about?"
-      placeholder: "Describe the feature here..."
-      
-  - type: textarea
-    id: implementation
-    attributes:
-      label: "Possible Implementation"
-      description: "How can this be implemented? Mention technologies or approaches."
-      placeholder: "Describe the implementation details here..."
-      
+      label: "Feature Description"
+      description: "What is the feature and why is it needed?"
+      placeholder: |
+        **Overview:**  
+        **Why is this needed?**  
+        **Key benefits:**  
+
   - type: textarea
     id: use-case
     attributes:
       label: "Use Case"
-      description: "Why is this feature needed? How does it benefit users?"
-      placeholder: "Explain the use case here..."
-      
+      description: "How will this feature be used? Provide real-world scenarios."
+      placeholder: |
+        **Example 1:** ...  
+        **Example 2:** ...  
+        **Who benefits from this feature?**  
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "📌 Priority"
+      description: "How important is this feature?"
+      options:
+        - Low (Nice to have)
+        - Medium (Important, but not urgent)
+        - High (Critical, must-have)
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: "Possible Implementation"
+      description: "How could this feature be implemented? Mention any libraries, APIs, or technical details."
+      placeholder: |
+        **Technical approach:**  
+        **Potential challenges:**  
+
+  - type: input
+    id: related-issues
+    attributes:
+      label: "🔗 Related Issues (if any)"
+      description: "Mention related issues or dependencies."
+      placeholder: "e.g., #123, #456"
+
   - type: textarea
     id: visual-references
     attributes:
-      label: "Visual References (if applicable)"
-      description: "Attach screenshots, links, or other references."
-      placeholder: "Paste links or image references here..."
+      label: "📷 Visual References (if applicable)"
+      description: "Attach images, links, or mockups to illustrate your idea."
+      placeholder: "Paste links or attach screenshots..."
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: "📝 Additional Notes"
+      description: "Any other details or context?"
+      placeholder: "Add any extra information here..."
+

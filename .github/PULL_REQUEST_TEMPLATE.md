@@ -1,7 +1,15 @@
+---
+name: "🔀 Pull Request"
+about: "Submit changes to the project"
+title: "[PR] Short title describing the change"
+labels:
+---
+
 ## 📝 Description
 <!-- Clearly describe what changes this PR makes and why -->
 
 ## 🔍 Changes
+<!-- List major changes made in this PR -->
 - Fixes #[Issue Number] (if applicable)
 - Adds feature X
 - Refactors Y
