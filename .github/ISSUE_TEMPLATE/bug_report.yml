@@ -46,16 +46,20 @@ body:
       description: "What actually happened?"
       placeholder: "Explain what went wrong instead."
 
-  - type: input
+  - type: textarea
     id: system-info
     attributes:
-      label: "System Information"
+      label: "💻 System Information"
       description: "Provide details about your environment (OS, browser, dependencies, etc.)."
-      placeholder: "OS: ..., Browser: ..., Dependencies: ..."
+      placeholder: "Specify your system details below..."
       value: |
-        label: "OS: "
-        label: "Browser: "
-        label: "Dependencies: "
+        **OS:**  
+        **Browser:**  
+        **Node.js/Python Version:**  
+        **Dependencies:**  
+        **Other relevant info:**  
+
+
   - type: textarea
     id: error-logs
     attributes:
