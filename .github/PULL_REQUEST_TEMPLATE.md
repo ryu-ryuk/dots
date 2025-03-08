@@ -1,18 +1,11 @@
----
-name: "Pull Request"
-about: "Submit changes to the project"
-title: "[PR] Short title describing the change"
-labels: ["pull request"]
----
-
 ## 📝 Description
-<!-- Briefly describe the purpose and impact of this PR -->
+<!-- Clearly describe what changes this PR makes and why -->
 
 ## 🔍 Changes
-- [ ] Fixes #[Issue Number] (if applicable)
-- [ ] Adds feature X
-- [ ] Refactors Y
-- [ ] Updates documentation
+- Fixes #[Issue Number] (if applicable)
+- Adds feature X
+- Refactors Y
+- Updates documentation
 
 ## ✅ Checklist
 - [ ] Code is tested and works as expected
@@ -23,8 +16,7 @@ labels: ["pull request"]
 - [ ] Added/updated tests (if applicable)
 
 ### 🔍 Review Process
-- PRs must be made to the dev branch  
-- At least two members must approve the PR  
-- CI/CD checks must pass  
-- Open to feedback and improvements  
-
+✅ PRs must be made to the `dev` branch  
+✅ At least two members must approve the PR  
+✅ CI/CD checks must pass  
+✅ Open to feedback and improvements  
