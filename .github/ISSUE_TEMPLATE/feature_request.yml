@@ -7,38 +7,33 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Feature Proposal  :?
-        <!-- Briefly describe the feature and its purpose -->
+        ## 🚀 Feature Proposal  
+        Provide a detailed description of the feature.
 
   - type: textarea
     id: feature-proposal
     attributes:
       label: "Feature Proposal"
-      description: "Provide a detailed description of the feature."
+      description: "What is the feature about?"
       placeholder: "Describe the feature here..."
-      value: ""
-
+      
   - type: textarea
     id: implementation
     attributes:
       label: "Possible Implementation"
-      description: "Suggest how this feature could be implemented, including any relevant technologies or approaches."
+      description: "How can this be implemented? Mention technologies or approaches."
       placeholder: "Describe the implementation details here..."
-      value: ""
-
+      
   - type: textarea
     id: use-case
     attributes:
       label: "Use Case"
-      description: "Explain why this feature is needed and how it benefits users."
-      placeholder: "Describe the use case here..."
-      value: ""
-
+      description: "Why is this feature needed? How does it benefit users?"
+      placeholder: "Explain the use case here..."
+      
   - type: textarea
     id: visual-references
     attributes:
       label: "Visual References (if applicable)"
-      description: "Attach screenshots or links that help illustrate the feature."
+      description: "Attach screenshots, links, or other references."
       placeholder: "Paste links or image references here..."
-      value: ""
-
