@@ -1,3 +1,6 @@
+jq
+bc
+swww
 7zip
 android-tools
 anyrun-git
