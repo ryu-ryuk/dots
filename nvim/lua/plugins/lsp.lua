@@ -1,513 +1,235 @@
-local M = {
-	mason_tools = {
-		-- Lua
-		"lua-language-server", -- language server
-		"stylua", -- formatter
-		"luacheck", -- linter
+return { -- LSP Configuration & Plugins
+  'neovim/nvim-lspconfig',
+  dependencies = {
+    -- Automatically install LSPs and related tools to stdpath for neovim
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-		-- Golang
-		"gopls", -- language server
-		"goimports", -- formatter
-		"revive", -- linter
+    -- Useful status updates for LSP.
+    -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+    {
+      'j-hui/fidget.nvim',
+      tag = 'v1.4.0',
+      opts = {
+        progress = {
+          display = {
+            done_icon = '✓', -- Icon shown when all LSP progress tasks are complete
+          },
+        },
+        notification = {
+          window = {
+            winblend = 0, -- Background color opacity in the notification window
+          },
+        },
+      },
+    },
+  },
+  config = function()
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
+      -- Create a function that lets us more easily define mappings specific LSP related items.
+      -- It sets the mode, buffer and description for us each time.
+      callback = function(event)
+        local map = function(keys, func, desc)
+          vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+        end
 
-		-- Rust (managed by `rustup`)
-		-- "rustfmt", -- formatter"
-		-- "rust-analyzer", -- language server
+        -- Jump to the definition of the word under your cursor.
+        --  This is where a variable was first declared, or where a function is defined, etc.
+        --  To jump back, press <C-T>.
+        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
-		-- Python
-		"pyright", -- language server
-		"ruff", -- formatter
+        -- Find references for the word under your cursor.
+        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
-		-- Shell
-		"bash-language-server", -- language server
-		"shfmt", -- formatting
+        -- Jump to the implementation of the word under your cursor.
+        --  Useful when your language has ways of declaring types without an actual implementation.
+        map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
-		-- FE
-		"typescript-language-server", -- TypeScript language server
-		"css-lsp", -- CSS language server
-		"json-lsp", -- JSON language server
-		"tailwindcss-language-server", -- Tailwind language server
-		"prettier", -- formatter
-		"eslint-lsp", -- linter
-		"stylelint", -- linter
+        -- Jump to the type of the word under your cursor.
+        --  Useful when you're not sure what type a variable is and you want to see
+        --  the definition of its *type*, not where it was *defined*.
+        map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
 
-		-- XML
-		"html-lsp", -- HTML language server
-		"taplo", -- TOML language server
-		"yaml-language-server", -- YAML language server
-		"lemminx", -- XML language server
+        -- Fuzzy find all the symbols in your current document.
+        --  Symbols are things like variables, functions, types, etc.
+        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
-		-- Docker
-		"dockerfile-language-server",
-		"docker-compose-language-service",
+        -- Fuzzy find all the symbols in your current workspace
+        --  Similar to document symbols, except searches over your whole project.
+        map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-		-- GitHub Action
-		"actionlint", -- linter
+        -- Rename the variable under your cursor
+        --  Most Language Servers support renaming across files, etc.
+        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
-		-- Misc
-		"cspell", -- spell checker
-		"marksman", -- Markdown language server
-		"sqlls", -- SQL language server
-	},
-	configs = {
-		stylua = {
-			files = { "stylua.toml", ".stylua.toml" },
-			default = vim.fn.expand("$HOME/.config/rules/stylua.toml"),
-		},
-		luacheck = {
-			files = { ".luacheckrc" },
-			default = vim.fn.expand("$HOME/.config/rules/.luacheckrc"),
-		},
-		revive = {
-			files = { "revive.toml" },
-			default = vim.fn.expand("$HOME/.config/rules/revive.toml"),
-		},
-		rustfmt = {
-			files = { "rustfmt.toml", ".rustfmt.toml" },
-			default = vim.fn.expand("$HOME/.config/rules/rustfmt.toml"),
-		},
-		prettier = {
-			files = {
-				".prettierrc",
-				".prettierrc.js",
-				".prettierrc.json",
-				".prettierrc.yaml",
-				".prettierrc.yml",
-				"prettier.config.js",
-			},
-			default = vim.fn.expand("$HOME/.config/rules/.prettierrc.json"),
-		},
-		stylelint = {
-			files = {
-				".stylelintrc",
-				".stylelintrc.js",
-				".stylelintrc.json",
-				".stylelintrc.yaml",
-				".stylelintrc.yml",
-				"stylelint.config.js",
-			},
-			default = vim.fn.expand("$HOME/.config/rules/stylelint/stylelint.config.js"),
-		},
-	},
+        -- Execute a code action, usually your cursor needs to be on top of an error
+        -- or a suggestion from your LSP for this to activate.
+        map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+
+        -- Opens a popup that displays documentation about the word under your cursor
+        --  See `:help K` for why this keymap
+        map('K', vim.lsp.buf.hover, 'Hover Documentation')
+
+        -- WARN: This is not Goto Definition, this is Goto Declaration.
+        --  For example, in C this would take you to the header
+        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
+        map('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+        map('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+        map('<leader>wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, '[W]orkspace [L]ist Folders')
+
+        -- The following two autocommands are used to highlight references of the
+        -- word under your cursor when your cursor rests there for a little while.
+        --    See `:help CursorHold` for information about when this is executed
+        --
+        -- When you move your cursor, the highlights will be cleared (the second autocommand).
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client and client.server_capabilities.documentHighlightProvider then
+          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+            buffer = event.buf,
+            callback = vim.lsp.buf.document_highlight,
+          })
+
+          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+            buffer = event.buf,
+            callback = vim.lsp.buf.clear_references,
+          })
+        end
+      end,
+    })
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+
+    -- Enable the following language servers
+    local servers = {
+      lua_ls = {
+        -- cmd = {...},
+        -- filetypes { ...},
+        -- capabilities = {},
+        settings = {
+          Lua = {
+            runtime = { version = 'LuaJIT' },
+            workspace = {
+              checkThirdParty = false,
+              -- Tells lua_ls where to find all the Lua files that you have loaded
+              -- for your neovim configuration.
+              library = {
+                '${3rd}/luv/library',
+                unpack(vim.api.nvim_get_runtime_file('', true)),
+              },
+              -- If lua_ls is really slow on your computer, you can try this instead:
+              -- library = { vim.env.VIMRUNTIME },
+            },
+            completion = {
+              callSnippet = 'Replace',
+            },
+            telemetry = { enable = false },
+            diagnostics = { disable = { 'missing-fields' } },
+          },
+        },
+      },
+      pylsp = {
+        settings = {
+          pylsp = {
+            plugins = {
+              pyflakes = { enabled = false },
+              pycodestyle = { enabled = false },
+              autopep8 = { enabled = false },
+              yapf = { enabled = false },
+              mccabe = { enabled = false },
+              pylsp_mypy = { enabled = false },
+              pylsp_black = { enabled = false },
+              pylsp_isort = { enabled = false },
+            },
+          },
+        },
+      },
+      -- basedpyright = {
+      --   -- Config options: https://github.com/DetachHead/basedpyright/blob/main/docs/settings.md
+      --   settings = {
+      --     basedpyright = {
+      --       disableOrganizeImports = true, -- Using Ruff's import organizer
+      --       disableLanguageServices = false,
+      --       analysis = {
+      --         ignore = { '*' },                 -- Ignore all files for analysis to exclusively use Ruff for linting
+      --         typeCheckingMode = 'off',
+      --         diagnosticMode = 'openFilesOnly', -- Only analyze open files
+      --         useLibraryCodeForTypes = true,
+      --         autoImportCompletions = true,     -- whether pyright offers auto-import completions
+      --       },
+      --     },
+      --   },
+      -- },
+      ruff = {
+        -- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
+        -- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218
+        commands = {
+          RuffAutofix = {
+            function()
+              vim.lsp.buf.execute_command {
+                command = 'ruff.applyAutofix',
+                arguments = {
+                  { uri = vim.uri_from_bufnr(0) },
+                },
+              }
+            end,
+            description = 'Ruff: Fix all auto-fixable problems',
+          },
+          RuffOrganizeImports = {
+            function()
+              vim.lsp.buf.execute_command {
+                command = 'ruff.applyOrganizeImports',
+                arguments = {
+                  { uri = vim.uri_from_bufnr(0) },
+                },
+              }
+            end,
+            description = 'Ruff: Format imports',
+          },
+        },
+      },
+      jsonls = {},
+      sqlls = {},
+      terraformls = {},
+      yamlls = {},
+      bashls = {},
+      dockerls = {},
+      docker_compose_language_service = {},
+      -- tailwindcss = {},
+      -- graphql = {},
+      -- html = { filetypes = { 'html', 'twig', 'hbs' } },
+      -- cssls = {},
+      -- ltex = {},
+      -- texlab = {},
+    }
+
+    -- Ensure the servers and tools above are installed
+    require('mason').setup()
+
+    -- You can add other tools here that you want Mason to install
+    -- for you, so that they are available from within Neovim.
+    local ensure_installed = vim.tbl_keys(servers or {})
+    vim.list_extend(ensure_installed, {
+      'stylua', -- Used to format lua code
+    })
+    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+    require('mason-lspconfig').setup {
+      handlers = {
+        function(server_name)
+          local server = servers[server_name] or {}
+          -- This handles overriding only values explicitly passed
+          -- by the server configuration above. Useful when disabling
+          -- certain features of an LSP (for example, turning off formatting for tsserver)
+          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+          require('lspconfig')[server_name].setup(server)
+        end,
+      },
+    }
+  end,
 }
-
-function M.capabilities(override)
-	if not M._capabilities then
-		M._capabilities = require("cmp_nvim_lsp").default_capabilities()
-	end
-	return override and vim.tbl_deep_extend("keep", M._capabilities, override) or M._capabilities
-end
-
-function M.resolve_config(type)
-	local config = M.configs[type]
-	local cache = {}
-
-	local function glob(cwd, dir)
-		for _, file in ipairs(config.files) do
-			if vim.fn.filereadable(dir .. "/" .. file) == 1 then
-				cache[cwd] = dir .. "/" .. file
-				return true
-			end
-		end
-	end
-
-	return function()
-		local cwd = vim.fn.getcwd()
-		if cache[cwd] then
-			return cache[cwd]
-		end
-
-		if glob(cwd, cwd) then
-			return cache[cwd]
-		end
-
-		for dir in vim.fs.parents(cwd) do
-			if glob(cwd, dir) then
-				return cache[cwd]
-			end
-		end
-
-		cache[cwd] = config.default
-		return cache[cwd]
-	end
-end
-
-function M.nix_setup()
-	if vim.fn.isdirectory("/nix") == 0 then
-		return
-	end
-	require("lspconfig").nil_ls.setup {
-		capabilities = M.capabilities(),
-		settings = {
-			["nil"] = {
-				formatting = {
-					command = { "nixpkgs-fmt" },
-				},
-			},
-		},
-	}
-end
-
-function M.lua_setup()
-	require("lspconfig").lua_ls.setup {
-		capabilities = M.capabilities(),
-		settings = {
-			Lua = {
-				completion = { postfix = "." },
-				diagnostics = {
-					disable = { "lowercase-global" },
-					globals = { "vim" },
-				},
-				format = { enable = false },
-				workspace = {
-					checkThirdParty = false,
-					ignoreDir = { ".vscode", "node_modules" },
-					-- library = vim.api.nvim_get_runtime_file("", true),
-				},
-				runtime = { version = "LuaJIT" },
-				telemetry = { enable = false },
-			},
-		},
-	}
-end
-
-function M.go_setup()
-	require("lspconfig").gopls.setup {
-		capabilities = M.capabilities(),
-	}
-end
-
-function M.fe_setup()
-	require("lspconfig").ts_ls.setup {
-		capabilities = M.capabilities(),
-	}
-	require("lspconfig").html.setup {
-		capabilities = M.capabilities(),
-	}
-	require("lspconfig").cssls.setup {
-		capabilities = M.capabilities(),
-		settings = {
-			css = { validate = false },
-		},
-	}
-
-	local eslint_default = require("lspconfig").eslint.config_def.default_config
-	local eslint_settings = { packageManager = "pnpm", useESLintClass = true }
-
-	if not eslint_default.root_dir(vim.fn.getcwd()) then
-		eslint_settings.experimental = { useFlatConfig = true }
-		eslint_settings.options = { overrideConfigFile = vim.fn.expand("$HOME/.config/rules/eslint/eslint.config.cjs") }
-	end
-	require("lspconfig").eslint.setup {
-		filetypes = {
-			"json",
-			"jsonc",
-			"json5",
-			"yaml",
-			"yaml.docker-compose",
-			"toml",
-			unpack(eslint_default.filetypes),
-		},
-		root_dir = function(fname) return eslint_default.root_dir(fname) or vim.fs.dirname(fname) end,
-		-- https://github.com/Microsoft/vscode-eslint#settings-options
-		settings = eslint_settings,
-		on_attach = function(client, bufnr)
-			client.server_capabilities.documentFormattingProvider = true
-			client.server_capabilities.documentRangeFormattingProvider = true
-		end,
-	}
-
-	require("lspconfig").tailwindcss.setup {
-		capabilities = M.capabilities(),
-	}
-end
-
-function M.rust_setup()
-	require("lspconfig").rust_analyzer.setup {
-		capabilities = M.capabilities(),
-		cmd = vim.lsp.rpc.connect("/tmp/ra-mux.sock"),
-		settings = {
-			["rust-analyzer"] = {
-				cargo = { allFeatures = true },
-				procMacro = { enable = true },
-				checkOnSave = { command = "clippy" },
-				lspMux = {
-					version = "1",
-					method = "connect",
-					server = "rust-analyzer",
-				},
-			},
-		},
-	}
-
-	vim.api.nvim_create_autocmd("BufWritePost", {
-		pattern = "*/Cargo.toml",
-		callback = function()
-			for _, client in ipairs(vim.lsp.get_clients { name = "rust_analyzer" }) do
-				client.request("rust-analyzer/reloadWorkspace", nil, function() end, 0)
-			end
-		end,
-		group = vim.api.nvim_create_augroup("RustWorkspaceRefresh", { clear = true }),
-	})
-end
-
-function M.python_setup()
-	-- Disable hints, which are covered by `ruff`
-	-- https://github.com/lkhphuc/dotfiles/blob/6de9bd6fd5526c337445dc40000ec1573d4e351e/nvim/lua/plugins/extras/python.lua#L9
-	local capabilities = M.capabilities {
-		textDocument = {
-			publishDiagnostics = {
-				tagSupport = { valueSet = { 2 } },
-			},
-		},
-	}
-
-	require("lspconfig").pyright.setup {
-		capabilities = capabilities,
-		settings = {
-			python = {
-				analysis = {
-					diagnosticSeverityOverrides = {
-						-- https://microsoft.github.io/pyright/#/configuration?id=diagnostic-rule-defaults
-						reportMissingImports = "error",
-						reportUndefinedVariable = "none",
-					},
-					typeCheckingMode = "off",
-				},
-			},
-		},
-	}
-end
-
-function M.json_setup()
-	require("lspconfig").jsonls.setup {
-		capabilities = M.capabilities(),
-		settings = {
-			json = {
-				schemas = require("schemastore").json.schemas(),
-				validate = { enable = true },
-			},
-		},
-	}
-end
-
-function M.yaml_setup()
-	require("lspconfig").yamlls.setup {
-		capabilities = M.capabilities(),
-		settings = {
-			yaml = {
-				schemas = require("schemastore").yaml.schemas(),
-			},
-		},
-	}
-end
-
-function M.toml_setup()
-	require("lspconfig").taplo.setup {
-		capabilities = M.capabilities(),
-	}
-end
-
-function M.markdown_setup()
-	require("lspconfig").marksman.setup {
-		capabilities = M.capabilities(),
-	}
-end
-
-return {
-	-- Configurations for build-in LSP of nvim
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{
-				"WhoIsSethDaniel/mason-tool-installer.nvim",
-				opts = { ensure_installed = M.mason_tools },
-			},
-			{ "b0o/SchemaStore.nvim", lazy = true },
-		},
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-			M.nix_setup()
-			M.lua_setup()
-			M.go_setup()
-			M.fe_setup()
-			M.rust_setup()
-			M.python_setup()
-			M.json_setup()
-			M.yaml_setup()
-			-- M.toml_setup()
-			M.markdown_setup()
-
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-				callback = function(event)
-					-- Enable completion triggered by <c-x><c-o>
-					vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = event.buf })
-					vim.keymap.set({ "n", "v" }, "<C-CR>", vim.lsp.buf.code_action, { buffer = event.buf })
-
-					-- Jump to next/previous diagnostic
-					vim.keymap.set(
-						"n",
-						"[e",
-						function() vim.diagnostic.goto_prev { severity = vim.diagnostic.severity.ERROR } end,
-						{ buffer = event.buf }
-					)
-					vim.keymap.set(
-						"n",
-						"]e",
-						function() vim.diagnostic.goto_next { severity = vim.diagnostic.severity.ERROR } end,
-						{ buffer = event.buf }
-					)
-				end,
-			})
-		end,
-	},
-
-	{
-		"stevearc/conform.nvim",
-		event = "BufWritePre",
-		config = function()
-			local conform = require("conform")
-			local stylua_config = M.resolve_config("stylua")
-			local rustfmt_config = M.resolve_config("rustfmt")
-			local prettier_config = M.resolve_config("prettier")
-			local stylelint_config = M.resolve_config("stylelint")
-
-			conform.formatters.stylua = {
-				prepend_args = function() return { "--config-path", stylua_config(), "--no-editorconfig" } end,
-			}
-			conform.formatters.rustfmt = {
-				prepend_args = function() return { "--config-path", rustfmt_config() } end,
-			}
-			conform.formatters.prettier = {
-				prepend_args = function() return { "--config", prettier_config() } end,
-			}
-			conform.formatters.stylelint = {
-				prepend_args = function() return { "-c", stylelint_config(), "--stdin-filepath", "$FILENAME" } end,
-			}
-
-			require("conform").setup {
-				formatters_by_ft = {
-					-- Lua
-					lua = { "stylua" },
-					luau = { "stylua" },
-
-					-- Golang
-					go = { "goimports" },
-
-					-- Rust
-					rust = { "rustfmt" },
-
-					-- Python
-					python = { "ruff_format" },
-
-					-- JavaScript
-					-- javascript = { "prettier" },
-					-- javascriptreact = { "prettier" },
-					-- ["javascript.jsx"] = { "prettier" },
-					-- typescript = { "prettier" },
-					-- typescriptreact = { "prettier" },
-					-- ["typescript.jsx"] = { "prettier" },
-
-					-- JSON/XML
-					json = { "prettier" },
-					jsonc = { "prettier" },
-					json5 = { "prettier" },
-					yaml = { "prettier" },
-					["yaml.docker-compose"] = { "prettier" },
-					html = { "prettier" },
-
-					-- Markdown
-					markdown = { "prettier" },
-					["markdown.mdx"] = { "prettier" },
-
-					-- CSS
-					css = { "prettier", "stylelint" },
-					less = { "prettier", "stylelint" },
-					scss = { "prettier", "stylelint" },
-					sass = { "prettier", "stylelint" },
-				},
-				format_after_save = {
-					lsp_fallback = true,
-				},
-				notify_on_error = false,
-			}
-		end,
-	},
-
-	{
-		"mfussenegger/nvim-lint",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			local lint = require("lint")
-			lint.linters_by_ft = {
-				lua = { "luacheck" },
-				go = { "revive" },
-				css = { "stylelint" },
-				less = { "stylelint" },
-				scss = { "stylelint" },
-				sass = { "stylelint" },
-				yaml = { "actionlint" },
-			}
-
-			lint.linters.luacheck.args = {
-				"--config",
-				M.resolve_config("luacheck"),
-				"--formatter",
-				"plain",
-				"--codes",
-				"--ranges",
-				"-",
-			}
-			lint.linters.revive.args = { "-config", M.resolve_config("revive") }
-			lint.linters.stylelint.args = {
-				"-c",
-				M.resolve_config("stylelint"),
-				"-f",
-				"json",
-				"--stdin",
-				"--stdin-filename",
-				function() return vim.fn.expand("%:p") end,
-			}
-
-			vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
-				group = vim.api.nvim_create_augroup("Linting", { clear = true }),
-				callback = function() lint.try_lint() end,
-			})
-		end,
-	},
-
-	-- Integrating non-LSPs like Prettier
-	{
-		"nvimtools/none-ls.nvim",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim", lazy = true },
-			{
-				"WhoIsSethDaniel/mason-tool-installer.nvim",
-				opts = { ensure_installed = M.mason_tools },
-			},
-			{ "davidmh/cspell.nvim", lazy = true },
-		},
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			local nls = require("null-ls")
-			local cspell = require("cspell")
-
-			nls.setup {
-				sources = {
-					cspell.diagnostics.with {
-						diagnostics_postprocess = function(diagnostic) diagnostic.severity = vim.diagnostic.severity.HINT end,
-					},
-					cspell.code_actions,
-
-					nls.builtins.code_actions.gitrebase,
-					nls.builtins.code_actions.gitsigns,
-				},
-			}
-		end,
-	},
-}
-
