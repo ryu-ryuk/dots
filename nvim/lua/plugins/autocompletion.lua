@@ -118,6 +118,7 @@ return { -- Autocompletion
         end, { 'i', 's' }),
       },
       sources = {
+        { name = 'copilot' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },
@@ -134,6 +135,7 @@ return { -- Autocompletion
             luasnip = '[Snippet]',
             buffer = '[Buffer]',
             path = '[Path]',
+            copilot = '[Copilot]',
           })[entry.source.name]
           return vim_item
         end,

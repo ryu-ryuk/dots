@@ -39,6 +39,9 @@ require('lazy').setup {
   --  { import = "plugins.aerial" },
   { import = 'plugins.ui' },
   { import = 'plugins.snacks' },
+  { import = 'plugins.conform' },
+  { import = 'plugins.diffview' },
+  { import = 'plugins.yanky' },
   { import = 'plugins.vim-tmux-navigator' },
 }
 

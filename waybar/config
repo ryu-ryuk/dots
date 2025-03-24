@@ -5,8 +5,8 @@
 	// Bar height is based on the css font size. Don't forget to change the tray icon size!
 	// "width": 1366, // Waybar width
 	// Choose the order of the modules
-	"modules-left": ["hyprland/workspaces", "tray"],
-	"modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "clock", "group/power"],
+	"modules-left": ["hyprland/workspaces"],
+	"modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "battery", "clock", "group/power"],
 	"modules-center": ["hyprland/window"],
 
 	"hyprland/language": {
