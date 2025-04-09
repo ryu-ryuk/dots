@@ -2,15 +2,15 @@
 # Set config paths
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 CONFIG_DIR="$XDG_CONFIG_HOME/scripts"
-RofiConf="$XDG_CONFIG_HOME/rofi/catppuccin-def.rasi"
+RofiConf="$XDG_CONFIG_HOME/rofi/config.rasi"
 WALLPAPER_DIR="$HOME/Pictures/wallpapers/"
 
 select_wallpaper() {
     # Create a temporary theme file for the 3x3 grid
     TEMP_THEME="/tmp/rofi_wall_grid.rasi"
-    
+
     # Write a simple theme override to the temporary file with shortened text
-    cat > "$TEMP_THEME" << EOF
+    cat >"$TEMP_THEME" <<EOF
 * {
     lines: 3;
 }
@@ -47,16 +47,16 @@ EOF
         fi
         echo -en "$file\x00icon\x1f$file\x1finfo\x1f$short_name\n"
     done | rofi -dmenu -theme "$RofiConf" -theme-str "@import \"$TEMP_THEME\"" -show-icons)
-    
+
     # Clean up the temporary theme file
     rm -f "$TEMP_THEME"
-    
+
     # Check if a wallpaper was selected
     if [ -z "$imgpath" ]; then
         echo "No wallpaper selected. Exiting..."
         exit 0
     fi
-    
+
     # Apply wallpaper using switch-wall.sh
     "$CONFIG_DIR/switch-wall.sh" "$imgpath"
 }

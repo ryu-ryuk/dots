@@ -1,0 +1,124 @@
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    modi:                        "drun";
+    font:                        "Ndot55 14";
+    show-icons:                  true;
+    drun-display-format:         "{name}";
+    hover-select:                true;
+    me-select-entry:             "MouseSecondary";
+    me-accept-entry:             "MousePrimary";
+    window-format:               "{w} · {c} · {t}";
+    dpi:                         1;
+}
+
+* {
+    background-alt:              @selected-active-background;
+    selected:                    @selected-normal-background;
+    active:                      @selected-urgent-background;
+    urgent:                      @selected-normal-background;
+    text-selected:               @foreground;
+    text-color:                  @foreground;
+    border-color:                @selected;
+}
+
+window {
+    enabled:                     true;
+    fullscreen:                  false;
+    transparency:                "real";
+    cursor:                      "default";
+    spacing:                     0px;
+    border-radius:               10px;
+    location:                    center;
+    anchor:                      center;
+    width:                       90%;
+    background-color:            #0000001a;
+    border:                      2px;
+    border-color:                #FFFFFF10;
+}
+
+mainbox {
+    enabled:                     true;
+    children:                    [ "inputbar", "listview" ];
+    background-color:            transparent;
+}
+
+inputbar {
+    enabled:                     true;
+    text-color:                  @text-color;
+    background-color:            transparent;
+    padding:                     5px;
+    margin:                      10px;
+    children:                    [ "entry" ];
+}
+
+entry {
+    enabled:                     true;
+    placeholder:                 "TYPE TO SEARCH";
+    padding:                     0px 380px 0px 380px;
+    text-color:                  inherit;
+    background-color:            transparent;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       2;
+    padding:                     30px;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    spacing:                     30px;
+    background-color:            transparent;
+    border:                      0px;
+}
+
+element {
+    enabled:                     true;
+    orientation:                 vertical;
+    expand:                      false;
+    spacing:                     4px;
+    padding:                     10px;
+    border-radius:               10px;
+    cursor:                      pointer;
+    background-color:            #00000033;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color:            #00000033;
+    text-color:                  inherit;
+}
+element normal.urgent,
+element alternate.urgent,
+element normal.active,
+element alternate.active {
+    background-color:            #00000000;
+    text-color:                  @foreground;
+}
+element selected.normal {
+    background-color:            @selected-urgent-background;
+    text-color:                  @text-selected;
+}
+
+element-icon {
+    size:                        300px;
+    expand:                      false;
+    padding:                     0px;
+    border-radius:               10px;
+    background-color:            transparent;
+}
+
+element-text {
+    enabled:                     true;
+    font:                        "JetBrainsMono Nerd Font 6";
+    horizontal-align:            0.5;
+    padding-top:                 4px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+

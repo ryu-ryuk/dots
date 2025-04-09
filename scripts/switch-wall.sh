@@ -17,16 +17,17 @@ switch() {
     # Simple update of hyprpaper.conf with sed
     # First backup the original
     cp "$HYPRPAPER_CONF" "${HYPRPAPER_CONF}.bak"
-    
+
     # Replace preload line
     sed -i "s|^preload =.*|preload = $imgpath|" "$HYPRPAPER_CONF"
-    
+
     # Replace wallpaper line
     sed -i "s|^wallpaper =.*|wallpaper = eDP-1,$imgpath|" "$HYPRPAPER_CONF"
-    
+
     # Start hyprpaper fresh with the new config
-    hyprpaper & disown
-    
+    hyprpaper &
+    disown
+
     # Send notification
     notify-send -a "Wallpaper" -i "$imgpath" "Changed~" "$(basename "$imgpath")"
 }
