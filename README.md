@@ -2,9 +2,8 @@
 
 ---
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7e7273c7-8a08-47dc-bd65-22c624e15847" alt="output" />
+  <img src="https://github.com/user-attachments/assets/7e7273c7-8a08-47dc-bd65-22c624e15847" alt="output" style="width: 100%;" />
 </p>
-![output]()
 
 
 
