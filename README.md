@@ -1,15 +1,10 @@
 # Configs for my personal Arch + Hyprland setup
 
 ---
-<p align="center">
-  <video width="100%" controls>
-    <source src="https://github.com/user-attachments/assets/74f36669-0e3f-4f8f-ae19-fc4aebc366db" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
 
+https://github.com/user-attachments/assets/74f36669-0e3f-4f8f-ae19-fc4aebc366db
 
-
+---
 
 
 ### Scripts // Wallpaper changer
