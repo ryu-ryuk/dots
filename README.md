@@ -1,6 +1,9 @@
 # Configs for my personal Arch + Hyprland setup
 
 ---
+<p align="center">
+	![output](https://github.com/user-attachments/assets/89452c49-c655-4e7e-916b-912f1077d57c)
+</p>
 
 ### Scripts // Wallpaper changer
 
@@ -8,9 +11,7 @@
 
 > [!IMPORTANT]
 > You can also use my wallpapers that i have collected over time from this [github repo](https://github.com/ryu-ryuk/wallpapers).
-<p align="center">
-  <img src="https://github.com/ryu-ryuk/wallpapers/assets/your_image.png" alt="output" />
-</p>
+
 
 ## dependencies:
 
