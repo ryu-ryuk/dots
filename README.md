@@ -9,7 +9,7 @@
 > [!IMPORTANT]
 > You can also use my wallpapers that i have collected over time from this [github repo](https://github.com/ryu-ryuk/wallpapers).
 
----![output](https://github.com/user-attachments/assets/54dce762-8eb9-48ec-b659-63b7e4deb3f5)
+<center> ![output](https://github.com/user-attachments/assets/54dce762-8eb9-48ec-b659-63b7e4deb3f5) </center>
 
 
 ## dependencies:
