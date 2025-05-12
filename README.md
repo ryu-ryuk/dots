@@ -2,9 +2,11 @@
 
 ---
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/74f36669-0e3f-4f8f-ae19-fc4aebc366db" alt="output" style="width: 100%;" />
+  <video width="100%" controls>
+    <source src="https://github.com/user-attachments/assets/74f36669-0e3f-4f8f-ae19-fc4aebc366db" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </p>
-
 
 
 
@@ -24,7 +26,3 @@
 ```
 sudo pacman -S hyprpaper rofi jq libnotify findutils coreutils grep sed dunst
 ```
-
-<p align="center">
-	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" />
-</p>
