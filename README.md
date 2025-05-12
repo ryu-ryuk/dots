@@ -1,6 +1,12 @@
 # Configs for my personal Arch + Hyprland setup
 
 ---
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7e7273c7-8a08-47dc-bd65-22c624e15847" alt="output" />
+</p>
+![output]()
+
+
 
 ### Scripts // Wallpaper changer
 
