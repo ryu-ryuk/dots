@@ -1,0 +1,149 @@
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    modi:                    "drun";
+    show-icons:              false;
+    drun-display-format:     "{name}";
+}
+
+* {
+    font:                    "NDot57 Bold 11";
+    background:              transparent;
+    background-alt:          rgba(0,0,0,0.2);
+    foreground:              white;
+    selected:                @color2;
+    active:                  @color8;
+    urgent:                  @color3;
+}
+
+window {
+    width:                   100%;
+    height:                  100%;
+    margin:                  0px;
+    padding:                 0px;
+}
+
+mainbox {
+    orientation:             vertical;
+    children:                [ "inputbar", "textbox-help", "message", "listview" ];
+    background-color:        transparent;
+    spacing:                 16px;
+    padding:                 64px;
+}
+
+inputbar {
+    children:                [ "dummy", "entry", "dummy" ];
+    border-radius:           5px;
+    spacing:                 0px;
+    padding:                 150px 64px;
+    orientation:             horizontal;
+    background-image:        url("~/Pictures/wallpapers/sky.png", width);
+}
+
+dummy {
+    background-color:        transparent;
+}
+
+textbox-help {
+    expand:                  false;
+    content:                 " [ CTRL DEL ]    DELETE                [ ALT DEL ]   WIPE ALL";
+    border-radius:           5px;
+    background-color:        @background-alt;
+    text-color:              @color2;
+    padding:                 10px;
+}
+
+entry {
+    cursor:                  inherit;
+    placeholder:             "TYPE TO SEARCH";
+    placeholder-color:       #FFFFFF80;
+    border-radius:           5px;
+    background-color:        @background-alt;
+    padding:                 10px 125px;
+    text-color:              @foreground;
+}
+
+listview {
+    cursor:                  default;
+    columns:                 2;
+    cycle:                   true;
+    dynamic:                 true;
+    scrollbar:               true;
+    layout:                  vertical;
+    fixed-height:            true;
+    fixed-columns:           true;
+    background-color:        transparent;
+    spacing:                 12px;
+    padding:                 0px;
+    text-color:              @foreground;
+}
+
+element {
+    spacing:                 10px;
+    padding:                 12px;
+    border-radius:           5px;
+    background-color:        transparent;
+    text-color:              @foreground;
+    cursor:                  pointer;
+}
+
+element normal.normal {
+    background-color:        transparent;
+    text-color:              inherit;
+}
+element normal.urgent {
+    background-color:        @urgent;
+    text-color:              @foreground;
+}
+element normal.active {
+    background-color:        @active;
+    text-color:              @foreground;
+}
+element selected.normal {
+    background-color:        @selected;
+    text-color:              @background;
+}
+element selected.urgent {
+    background-color:        @urgent;
+    text-color:              @background;
+}
+element selected.active {
+    background-color:        @urgent;
+    text-color:              @background;
+}
+
+element-icon {
+    size:                    32px;
+    background-color:        transparent;
+    text-color:              inherit;
+    cursor:                  inherit;
+}
+
+element-text {
+    background-color:        transparent;
+    text-color:              inherit;
+    cursor:                  inherit;
+    vertical-align:          0.5;
+    horizontal-align:        0.0;
+}
+
+message {
+    background-color:        transparent;
+}
+
+textbox {
+    padding:                 12px;
+    border-radius:           5px;
+    background-color:        @background-alt;
+    text-color:              @foreground;
+    vertical-align:          0.5;
+    horizontal-align:        0.0;
+}
+
+error-message {
+    padding:                 15px;
+    border-radius:           0px;
+    background-color:        @background;
+    text-color:              @foreground;
+}
+
