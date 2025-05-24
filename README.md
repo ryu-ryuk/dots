@@ -6,6 +6,10 @@ https://github.com/user-attachments/assets/74f36669-0e3f-4f8f-ae19-fc4aebc366db
 
 ---
 
+> [!WARNING]
+> I will add install scripts and proper deps for the entire dotfiles overtime : )
+
+---
 
 ### Scripts // Wallpaper changer
 
@@ -18,6 +22,6 @@ https://github.com/user-attachments/assets/74f36669-0e3f-4f8f-ae19-fc4aebc366db
 
 ## dependencies:
 
-```
+```bash
 sudo pacman -S hyprpaper rofi jq libnotify findutils coreutils grep sed dunst
 ```
