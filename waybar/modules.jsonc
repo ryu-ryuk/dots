@@ -1,0 +1,101 @@
+{
+	// "hyprland/workspaces": {
+	// 	"format": "{icon}",
+	// 	"on-click": "activate",
+	// 	"all-outputs": true,
+	// 	"sort-by-number": true,
+	// 	"format-icons": {
+	// 		"default": "󰫣",
+	// 		"active": "󰫢",
+	// 		"urgent": "󰀨"
+	// 	}
+	// },
+	// "clock": {
+	// 	"format": "{:%I:%M %p}",
+	// 	"format-alt": "{:%A, %B %d, %Y}",
+	// 	"tooltip-format": "<tt><small>{calendar}</small></tt>",
+	// 	"calendar": {
+	// 		"mode": "year",
+	// 		"mode-mon-col": 3,
+	// 		"weeks-pos": "right",
+	// 		"on-scroll": 1,
+	// 		"format": {
+	// 			"months": "<span color='#ffead3'><b>{}</b></span>",
+	// 			"days": "<span color='#ecc6d9'>{}</span>",
+	// 			"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+	// 			"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+	// 			"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+	// 		}
+	// 	},
+	// 	"actions": {
+	// 		"on-click-right": "mode",
+	// 		"on-click-forward": "tz_up",
+	// 		"on-click-backward": "tz_down",
+	// 		"on-scroll-up": "shift_up",
+	// 		"on-scroll-down": "shift_down"
+	// 	}
+	// },
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": "󰂄 {capacity}%",
+		"format-plugged": "󰚥 {capacity}%",
+		"format-alt": "{time} {icon}",
+		"format-full": "󰁹 {capacity}%",
+		"format-icons": [
+			"󰂎",
+			"󰁺",
+			"󰁻",
+			"󰁼",
+			"󰁽",
+			"󰁾",
+			"󰁿",
+			"󰂀",
+			"󰂁",
+			"󰂂",
+			"󰁹"
+		],
+		"tooltip-format": "Battery: {capacity}%\nTime remaining: {time}\nPower: {power}W"
+	},
+	// "network": {
+	// 	"format-wifi": "󰖩 {signalStrength}%",
+	// 	"format-ethernet": "󰈀 Connected",
+	// 	"format-linked": "󰈀 {ifname} (No IP)",
+	// 	"format-disconnected": "󰖪 Disconnected",
+	// 	"format-alt": "󰖩 {essid} ({signalStrength}%)",
+	// 	"on-click": "nm-connection-editor",
+	// 	"on-click-right": "kitty -e nmtui",
+	// 	"tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}</b>"
+	// },
+	"bluetooth": {
+		"format": "󰂯 {status}",
+		"format-disabled": "󰂲 Off",
+		"format-off": "󰂲 Off",
+		"format-on": "󰂯 On",
+		"format-connected": "󰂱 {num_connections}",
+		"format-connected-battery": "󰂱 {num_connections} {device_battery_percentage}%",
+		"tooltip-format": "Bluetooth: {status}",
+		"tooltip-format-connected": "󰂱 Connected:\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "• {device_alias} ({device_address})",
+		"tooltip-format-enumerate-connected-battery": "• {device_alias} ({device_address}) - {device_battery_percentage}%",
+		"on-click": "blueman-manager",
+		"on-click-right": "kitty -e bluetui"
+	}
+	// "group/custom-group": {
+	// 	"orientation": "inherit",
+	// 	"drawer": {
+	// 		"transition-duration": 300,
+	// 		"children-class": "drawer-child",
+	// 		"transition-left-to-right": false
+	// 	},
+	// 	"modules": [
+	// 		"battery",
+	// 		"bluetooth",
+	// 		"network"
+	// 	]
+	// }
+}
