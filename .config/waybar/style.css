@@ -1,122 +1,114 @@
-@import "../../.cache/wal/colors-waybar.css";
-
-@define-color main-color @color13;
-
 * {
-  border: none;
-  border-radius: 0px;
-  font-family: "Space Mono, Ndot55, DepartureMono Nerd Font";
-  font-weight: Bold;
-  font-size: 15px;
-  min-height: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
 }
 
 window#waybar {
-  border-radius: 20px;
-  background: alpha(@background, 0.1);
+    background: #000000;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
 }
 
-tooltip {
-  background: alpha(@background, 0.3);
-  border-radius: 10px;
-  border: 2px solid alpha(lighter(@main-color), 0.3);
-}
-
-tooltip label {
-  color: @foreground;
-}
-
-#workspaces {
-  background: alpha(@background, 0.2);
-  border-radius: 20px;
-  margin-top: 4px;
-  margin-bottom: 4px;
+/* Workspaces */
+#workspaces,
+#clock,
+#network,
+#bluetooth,
+#window {
+    background: transparent;
+    color: #cdd6f4;
+    padding: 0 8px;
 }
 
 #workspaces button {
-  padding: 0px;
-  color: alpha(@foreground, 0.5);
-  background: transparent;
-  border-radius: 10px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  padding-left: 3px;
-  padding-right: 3px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+    background: transparent;
+    color: #6c7086;
+    padding: 0 4px;
+    margin: 0 2px;
+    transition: all 0.3s ease;
 }
 
 #workspaces button.active {
-  background: alpha(@background, 0.2);
-  color: lighter(@main-color);
-  border-radius: 20px;
-  transition: color 0.5s;
-  margin-left: 3px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-right: 3px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.8s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-}
-
-#workspaces button.focused {
-  color: @color5;
-  background: transparent;
-}
-
-#workspaces button.urgent {
-  color: @color5;
-  background: transparent;
+    color: #cdd6f4;
+    background: #313244;
 }
 
 #workspaces button:hover {
-  background: transparent;
-  color: @color5;
+    background: #45475a;
+    color: #cdd6f4;
 }
 
-#window,
-#clock,
-#battery,
-#network,
-#memory,
-#bluetooth,
-#workspaces {
-  padding: 0px 14px 0px 14px;
-}
-
+/* Window title */
 #window {
-  margin-left: 60px;
-  margin-right: 60px;
-  background: alpha(@background, 0.3);
-  border-radius: 10px;
-  color: lighter(@main-color);
+    color: #a6adc8;
+    font-style: italic;
 }
 
-#clock {
-  color: lighter(@main-color);
-  background: transparent;
+/* Network module */
+/* #network { */
+    /* color: #89b4fa; */
+/* } */
+
+#network.disconnected {
+    color: #f38ba8;
 }
 
-#network {
-  color: lighter(@main-color);
-  background: transparent;
+#network.ethernet {
+    color: #a6e3a1;
 }
 
+/* Bluetooth module */
 #bluetooth {
-  color: lighter(@main-color);
-  background: transparent;
+    color: #cba6f7;
 }
 
-#battery {
-  color: lighter(@main-color);
-  background: transparent;
+#bluetooth.disabled {
+    color: #6c7086;
 }
 
-#memory {
-  color: lighter(@main-color);
-  background: transparent;
+#bluetooth.connected {
+    color: #a6e3a1;
 }
 
-#calendar {
-  font-family: "JetBrains Mono, DepartureMono Nerd Font";
+/* Clock */
+#clock {
+    color: #fab387;
+    font-weight: bold;
+}
+
+/* Tooltip styling */
+tooltip {
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+tooltip label {
+    color: #cdd6f4;
+}
+
+/* Calendar styling */
+calendar {
+    background: #000000;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+calendar:selected {
+    background: #313244;
+    border-radius: 4px;
+}
+
+/* Hover effects */
+#network:hover,
+#bluetooth:hover,
+#clock:hover {
+    background: #313244;
+    transition: all 0.3s ease;
 }

@@ -1,13 +1,76 @@
 {
+	"include": "~/.config/waybar/modules.jsonc",
 	"layer": "top",
 	"position": "top",
-	"margin": "5 10 0",
-    "fixed center": true,
-    "reload_style_on_change": true,
-	"height": 34,
-	"width": 500,
-    "include": ["~/.config/waybar/modules.jsonc"],
-	"modules-left": ["clock"],
-	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["group/custom-group"]
+	"height": 25,
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+	"modules-center": [
+		"hyprland/window"
+	],
+	"modules-right": [
+		"network",
+		"bluetooth",
+		"battery",
+		"clock"
+		// "tray"
+	],
+	"hyprland/workspaces": {},
+	"hyprland/window": {
+		"format": "{title}",
+		"max-length": 50
+	},
+	"clock": {
+		"format": "{:%H:%M}",
+		"format-alt": "{:%A, %B %d, %Y}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "month",
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'>{}</span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+	// 
+	"bluetooth": {
+		"format": "󰂯",
+		"format-disabled": "󰂲",
+		"format-connected": "󰂱 {num_connections}",
+		"tooltip-format": "Bluetooth: {status}",
+		"tooltip-format-connected": "Connected: {device_enumerate}",
+		"tooltip-format-enumerate-connected": "• {device_alias}",
+		"on-click": "blueman-manager"
+	},
+	"network": {
+		"format-wifi": "󰖩 {signalStrength}%",
+		"format-ethernet": "󰈀",
+		"format-disconnected": "󰖪",
+		"tooltip-format-wifi": "{essid} - {signalStrength}%",
+		"tooltip-format-ethernet": "Ethernet Connected",
+		"tooltip-format-disconnected": "No Connection",
+		"on-click": "~/.config/scripts/wifi-rofi.sh"
+	},
+	"battery": {
+		"format": "{capacity}%",
+		"format-charging": "{capacity}% ⚡",
+		"format-full": "{capacity}% ✔",
+		"tooltip": false,
+		"interval": 30
+	}
+	// "tray": {
+	// 	"icon-size": 16,
+	// 	"spacing": 5,
+	// 	"show-passive-items": true
+	// }
 }
