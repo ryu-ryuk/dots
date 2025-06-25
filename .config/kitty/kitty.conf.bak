@@ -1,7 +1,8 @@
 vim:fileencoding=utf-8:foldmethod=marker
 #
+shell /bin/zsh
 
-# include ~/.cache/wal/colors-kitty.conf
+include ~/.cache/wal/colors-kitty.conf
 # font_family       JetBrains Mono
 #italic_font      auto
 #bold_font        auto
@@ -19,16 +20,17 @@ modify_font strikethrough_position	5
 
 background_opacity 0.9
 background_blur 10
-window_padding_width 15 20 15 20
+
+window_padding_width 24
 scrollback_indicator_opacity 0
 
 # Cursor :{{
 # The cursor shape can be one of (block, beam, underline)
-cursor_shape block
+cursor_shape beam
 cursor_blink_interval -1 ease-in-out
 
-cursor_trail 50
-cursor_trail_decay 0.1 0.2
+#cursor_trail 50
+#cursor_trail_decay 0.1 0.2
 shell_integration no-cursor
 
 
@@ -37,12 +39,12 @@ shell_integration no-cursor
 # scrollback_line 5 
 
 # }}
-
+copy_on_select yes
 # Mouse :{{
 # url_color #0087bd
 # url_style curly
 # url_prefixes file ftp ftps git http https mailto
-strip_trailing_spaces always
+strip_trailing_spaces smart
 select_by_word_characters :@-./_~?&=%+#
 
 # }}
@@ -64,10 +66,9 @@ open_url_with default
 
 # Tab bar :{{
 
-
+tab_bar_edge bottom
 tab_bar_style powerline
-tab_powerline_style slanted
-
+tab_powerline_style round
 # }}
 
 # Advanced :{{
@@ -171,22 +172,9 @@ map ctrl+w launch sh -c "tmux kill-server"
 
 
 # BEGIN_KITTY_FONTS
-# font_family      family="CaskaydiaCove Nerd Font"
-# bold_font        auto
-# italic_font      auto
-# bold_italic_font auto
-
-
-
-# BEGIN_KITTY_THEME
-# Catppuccin-Mocha
-include current-theme.conf
-# END_KITTY_THEME
-
-
-# BEGIN_KITTY_FONTS
-font_family      family="Hack Nerd Font Mono"
+font_family      family="JetBrains Mono NL"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
 # END_KITTY_FONTS
+

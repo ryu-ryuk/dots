@@ -77,4 +77,4 @@ validate_images "${#images[@]}"
 random_image=$(select_random_image "${images[@]}")
 set_new_wallpaper "$random_image"
 restart_environment "$random_image"
-apply_wal_theme
+# apply_wal_theme
