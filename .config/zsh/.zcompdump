@@ -1,4 +1,4 @@
-#files: 1023	version: 5.9
+#files: 1028	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -486,6 +486,7 @@ _comps=(
 'ggetopt' '_getopt'
 'ggrep' '_grep'
 'ggv' '_gnome-gv'
+'gh' '_gh'
 'ghc' '_ghc'
 'ghci' '_ghc'
 'ghc-pkg' '_ghc'
@@ -1026,6 +1027,7 @@ _comps=(
 '-parameter-' '_parameter'
 'parec' '_pulseaudio'
 'parecord' '_pulseaudio'
+'pass' '_pass'
 'passwd' '_users'
 'paste' '_paste'
 'pasuspender' '_pulseaudio'
@@ -1108,6 +1110,7 @@ _comps=(
 'polybar' '_polybar'
 'polybar-msg' '_polybar_msg'
 'pon' '_pon'
+'pop' '_pop'
 'popd' '_directory_stack'
 'port' '_port'
 'postconf' '_postfix'
@@ -1623,6 +1626,7 @@ _comps=(
 'watcher' '_openstack'
 'wc' '_wc'
 'wemux' '_wemux'
+'wgcf' '_wgcf'
 'wget' '_wget'
 'wg-quick' '_wg-quick'
 'what' '_sccs'
@@ -1922,25 +1926,26 @@ autoload -Uz _afew _age _android _archlinux-java _artisan \
             _teamocil _thor _tmuxinator _tmuxp _tox \
             _tsc _ts-node _udisksctl _ufw _uuidgen \
             _virtualbox _vnstat _wemux _wg-quick _xsel \
-            _yarn _yfm _zcash-cli _zinit _bat \
-            _bluetoothctl _bootctl _bq _busctl _bwrap \
-            _cargo _checkupdates _code _coredumpctl _ctr \
-            _curl _dkms _docker _dolphin _dunst \
-            _dunstctl _eza _fastfetch _fd _flatpak \
-            _fuzzel _gcloud _gsutil _gum _hostnamectl \
-            _hyprctl _hyprpm _img2sixel _insmod _journalctl \
-            _kernel-install _kitty _libinput _localectl _loginctl \
-            _lsmod _machinectl _meson _mkinitcpio _mpv \
-            _networkctl _ninja _oomctl _paccache _pacdiff \
-            _paclist _paclog-pkglist _pacman _pacscripts _pacsearch \
-            _pacsort _pactree _pip _pkgfile _playerctl \
-            _polybar _polybar_msg _pulseaudio _rankmirrors _resolvectl \
-            _rg _rmmod _run0 _sd_hosts_or_user_at_host _sd_machines \
-            _sd_outputmodes _sd_unit_files _sensors _sensors-detect _shtab \
-            _sqv _swaync _swaync-client _swww _systemctl \
-            _systemd _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn \
-            _systemd-path _systemd-run _systemd-tmpfiles _timedatectl _udevadm \
-            _udisks2 _updpkgsums _upower _uv _varlinkctl \
+            _yarn _yfm _zcash-cli _zinit _asciinema \
+            _bat _bluetoothctl _bootctl _bq _busctl \
+            _bwrap _cargo _checkupdates _code _coredumpctl \
+            _ctr _curl _dkms _docker _dolphin \
+            _dunst _dunstctl _eza _fastfetch _fd \
+            _flatpak _fuzzel _gcloud _gh _gsutil \
+            _gum _hostnamectl _hyprctl _hyprpm _img2sixel \
+            _insmod _journalctl _kernel-install _kitty _libinput \
+            _localectl _loginctl _lsmod _machinectl _meson \
+            _mkinitcpio _mpv _networkctl _ninja _oomctl \
+            _paccache _pacdiff _paclist _paclog-pkglist _pacman \
+            _pacscripts _pacsearch _pacsort _pactree _pass \
+            _pip _pkgfile _playerctl _polybar _polybar_msg \
+            _pop _pulseaudio _rankmirrors _resolvectl _rg \
+            _rmmod _run0 _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes \
+            _sd_unit_files _sensors _sensors-detect _shtab _sqv \
+            _swaync _swaync-client _swww _systemctl _systemd \
+            _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn _systemd-path \
+            _systemd-run _systemd-tmpfiles _timedatectl _udevadm _udisks2 \
+            _updpkgsums _upower _uv _varlinkctl _wgcf \
             _wl-copy _wlogout _wl-paste _wpctl _yay \
             _yazi _zathura _zola _zoxide _cdr \
             _all_labels _all_matches _alternative _approximate _arg_compile \

@@ -123,22 +123,32 @@ or=38;2;243;139;168:\
 alias ..='cd ..'
 alias ...='cd ../..'
 alias c='clear'
+alias cdsafe='cloudflared tunnel run safe'
+alias warp-on='~/.config/scripts/warp-on.sh'
+alias warp-off='~/.config/scripts/warp-off.sh'
+
+
+# git aliases
+alias gs='git status'
+alias ga='git add'
+alias gp='git pull'
+alias gpsh='git push'
+alias gcm='git commit -m'
 # custom eza/ls configs
+# alias ls='eza -lh --time-style=long-iso -o --git'
 alias ls='eza --icons=auto --color=always --group-directories-first'
-alias l='eza -lha --icons=auto --color=always --sort=modified --group-directories-first'
+alias l='eza -lha --icons=auto --color=always --time-style=long-iso -o --git --sort=modified --group-directories-first'
 alias t='eza --tree --icons=auto --color=always --level=2'
 alias lr='eza -lha --icons=auto --color=always --sort=modified --reverse'
 alias vim='nvim'
 alias vi='nvim'
 alias p='sudo pacman'
-alias up='$aurhelper -Syu'
-alias un='$aurhelper -Rns'
 alias clip='wl-copy'
 alias ssh='kitten ssh'
 alias d='kitten diff'
 alias mkdir='mkdir -p'
 # alias foliate 
-
+alias gpgkeys='gpg --list-secret-keys --keyid-format LONG'
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -162,3 +172,12 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:$(go env GOPATH)/bin
+
+
+export POP_SMTP_HOST=smtp.gmail.com
+export POP_SMTP_PORT=587
+export POP_SMTP_USERNAME=pop@charm.sh
+export POP_SMTP_PASSWORD=hunter2
+
+export POP_FROM=meow@alokranjan.me
+export POP_SIGNATURE="from Alok Ranjan(https://alokranjan.me) :>"
