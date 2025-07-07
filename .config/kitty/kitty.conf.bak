@@ -2,22 +2,41 @@ vim:fileencoding=utf-8:foldmethod=marker
 #
 shell /bin/zsh
 
-include ~/.cache/wal/colors-kitty.conf
+# include ~/.cache/wal/colors-kitty.conf
 # font_family       JetBrains Mono
 #italic_font      auto
 #bold_font        auto
 #bold_italic_font auto
 
 # Font size (in pts)
-font_size        15.0
+font_size        20.0
 modify_font underline_position		5
 modify_font strikethrough_position	5
 
 # Color Scheme {{
 
 # bindkey -s '^F' 'fbat\n'
-
-
+# background            #0e1419
+# foreground            #e5e1cf
+# cursor                #f19618
+# selection_background  #243340
+# selection_foreground  #e5e1cf
+# color0  #0e1419
+# color1  #ff5c57
+# color2  #5af78e
+# color3  #f3f99d
+# color4  #57c7ff
+# color5  #ff6ac1
+# color6  #9aedfe
+# color7  #f1f1f0
+# color8   #5b6168
+# color9   #ff8080
+# color10  #8aff80
+# color11  #fff780
+# color12  #80dfff
+# color13  #ffb8d1
+# color14  #d6fcff
+# color15  #ffffff
 background_opacity 0.9
 background_blur 10
 
@@ -102,6 +121,8 @@ map ctrl+i kitten keymap.py "C-i"
 map ctrl+shift+v	paste_from_clipboard
 map ctrl+shift+c	copy_to_clipboard
 map shift+insert  	paste_from_selection
+# ctrl+backspace 
+map ctrl+backspace send_text all \x17
 
 # }}
 # Scrolling :{{
@@ -172,9 +193,15 @@ map ctrl+w launch sh -c "tmux kill-server"
 
 
 # BEGIN_KITTY_FONTS
-font_family      family="JetBrains Mono NL"
+font_family      family="JetBrains Mono"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
 # END_KITTY_FONTS
 
+
+
+# BEGIN_KITTY_THEME
+# graphite
+include current-theme.conf
+# END_KITTY_THEME
