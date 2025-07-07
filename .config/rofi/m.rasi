@@ -1,0 +1,109 @@
+* {
+    base:       #1e1e2e;
+    mantle:     #181825;
+    surface0:   #313244;
+    surface1:   #45475a;
+    overlay0:   #6c7086;
+    text:       #cdd6f4;
+    subtext:    #a6adc8;
+
+    red:        #f38ba8;
+    green:      #a6e3a1;
+    peach:      #fab387;
+    lavender:   #b4befe;
+    mauve:      #cba6f7;
+
+    background-color: @base;
+}
+
+window {
+    width: 640;
+    height: 520;
+    border: 2px;
+    border-radius: 14px;
+    border-color: @lavender;
+    background-color: #1e1e2ecc;
+}
+
+mainbox {
+    spacing: 12px;
+    padding: 10px;
+    children: [ inputbar, listview ];
+    background-color: transparent;
+}
+
+inputbar {
+    background-color: @surface0;
+    padding: 10px 18px;
+    margin: 0 16px;
+    border-radius: 10px;
+    text-color: @text;
+    font: "JetBrainsMono Nerd Font 13";
+}
+
+listview {
+    padding: 12px 16px;
+    spacing: 10px;
+    dynamic: true;
+    layout: vertical;
+    fixed-height: true;
+    border-radius: 0 0 14px 14px;
+    background-color: transparent;
+}
+
+entry, prompt, case-indicator {
+    text-color: @text;
+    background-color: transparent;
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+element {
+    orientation: horizontal;
+    padding: 6px 10px;
+    spacing: 8px;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+element.normal {
+    background-color: transparent;
+}
+
+element.alternate.normal {
+    background-color: @mantle;
+}
+
+element.selected.normal {
+    background-color: @surface0;
+}
+
+element.normal.active,
+element.alternate.active {
+    background-color: @peach;
+}
+
+element.selected.active {
+    background-color: @green;
+}
+
+element.normal.urgent,
+element.alternate.urgent {
+    background-color: @red;
+}
+
+element.selected.urgent {
+    background-color: @mauve;
+}
+
+element-icon {
+    size: 32px;
+    margin: 0 8px 0 0;
+    background-color: transparent;
+}
+
+element-text {
+    enabled: true;
+    font: "JetBrainsMono Nerd Font 12";
+    text-color: @text;
+    background-color: transparent;
+}

@@ -1,149 +1,114 @@
-@theme "~/.cache/wal/colors-rofi-dark.rasi"
-
-configuration {
-    modi:                    "drun";
-    show-icons:              false;
-    drun-display-format:     "{name}";
-}
+/**
+ * Catppuccin Mocha theme
+ * Color palette copied from https://catppuccin.com/palette
+ * https://github.com/hiimsergey/rofi-catppuccin
+ */
 
 * {
-    font:                    "NDot57 Bold 11";
-    background:              transparent;
-    background-alt:          rgba(0,0,0,0.2);
-    foreground:              white;
-    selected:                @color2;
-    active:                  @color8;
-    urgent:                  @color3;
+    base: #1e1e2e;
+    surface0: #313244;
+    overlay0: #6c7086;
+    text: #cdd6f4;
+
+    mauve: #cba6f7;
+    red: #f38ba8;
+    peach: #fab387;
+    green: #a6e3a1;
+    lavender: #b4befe;
+
+    background-color: @base;
 }
 
 window {
-    width:                   100%;
-    height:                  100%;
-    margin:                  0px;
-    padding:                 0px;
+    height: 600;
+    width: 600;
+
+    border: 3;
+    border-radius: 10;
+    border-color: @lavender;
 }
 
 mainbox {
-    orientation:             vertical;
-    children:                [ "inputbar", "textbox-help", "message", "listview" ];
-    background-color:        transparent;
-    spacing:                 16px;
-    padding:                 64px;
+    spacing: 0;
+    children: [inputbar, message, listview];
 }
 
 inputbar {
-    children:                [ "dummy", "entry", "dummy" ];
-    border-radius:           5px;
-    spacing:                 0px;
-    padding:                 150px 64px;
-    orientation:             horizontal;
-    background-image:        url("~/Pictures/wallpapers/sky.png", width);
-}
-
-dummy {
-    background-color:        transparent;
-}
-
-textbox-help {
-    expand:                  false;
-    content:                 " [ CTRL DEL ]    DELETE                [ ALT DEL ]   WIPE ALL";
-    border-radius:           5px;
-    background-color:        @background-alt;
-    text-color:              @color2;
-    padding:                 10px;
-}
-
-entry {
-    cursor:                  inherit;
-    placeholder:             "TYPE TO SEARCH";
-    placeholder-color:       #FFFFFF80;
-    border-radius:           5px;
-    background-color:        @background-alt;
-    padding:                 10px 125px;
-    text-color:              @foreground;
-}
-
-listview {
-    cursor:                  default;
-    columns:                 2;
-    cycle:                   true;
-    dynamic:                 true;
-    scrollbar:               true;
-    layout:                  vertical;
-    fixed-height:            true;
-    fixed-columns:           true;
-    background-color:        transparent;
-    spacing:                 12px;
-    padding:                 0px;
-    text-color:              @foreground;
-}
-
-element {
-    spacing:                 10px;
-    padding:                 12px;
-    border-radius:           5px;
-    background-color:        transparent;
-    text-color:              @foreground;
-    cursor:                  pointer;
-}
-
-element normal.normal {
-    background-color:        transparent;
-    text-color:              inherit;
-}
-element normal.urgent {
-    background-color:        @urgent;
-    text-color:              @foreground;
-}
-element normal.active {
-    background-color:        @active;
-    text-color:              @foreground;
-}
-element selected.normal {
-    background-color:        @selected;
-    text-color:              @background;
-}
-element selected.urgent {
-    background-color:        @urgent;
-    text-color:              @background;
-}
-element selected.active {
-    background-color:        @urgent;
-    text-color:              @background;
-}
-
-element-icon {
-    size:                    32px;
-    background-color:        transparent;
-    text-color:              inherit;
-    cursor:                  inherit;
-}
-
-element-text {
-    background-color:        transparent;
-    text-color:              inherit;
-    cursor:                  inherit;
-    vertical-align:          0.5;
-    horizontal-align:        0.0;
+    color: @text;
+    padding: 14;
+    background-color: @base;
 }
 
 message {
-    background-color:        transparent;
+    padding: 10;
+    background-color: @overlay0;
+}
+
+listview {
+    padding: 8;
+    border-radius: 0 0 10 10;
+    border: 2 2 2 2;
+    border-color: @base;
+    background-color: @base;
+    dynamic: false;
 }
 
 textbox {
-    padding:                 12px;
-    border-radius:           5px;
-    background-color:        @background-alt;
-    text-color:              @foreground;
-    vertical-align:          0.5;
-    horizontal-align:        0.0;
+    text-color: @text;
+    background-color: inherit;
 }
 
 error-message {
-    padding:                 15px;
-    border-radius:           0px;
-    background-color:        @background;
-    text-color:              @foreground;
+    border: 20 20 20 20;
 }
 
+entry, prompt, case-indicator {
+    text-color: inherit;
+}
+
+prompt {
+    margin: 0 10 0 0;
+}
+
+element {
+    padding: 5;
+    vertical-align: 0.5;
+    border-radius: 10;
+    background-color: @surface0;
+}
+
+element.selected.normal {
+    background-color: @overlay0;
+}
+
+element.alternate.normal {
+    background-color: inherit;
+}
+
+element.normal.active, element.alternate.active {
+    background-color: @peach;
+}
+
+element.selected.active {
+    background-color: @green;
+}
+
+element.normal.urgent, element.alternate.urgent {
+    background-color: @red;
+}
+
+element.selected.urgent {
+    background-color: @mauve;
+}
+
+element-text, element-icon {
+    size: 40;
+    margin: 0 10 0 0;
+    vertical-align: 0.5;
+    background-color: inherit;
+    text-color: @text;
+}
+
+element-text .active, element-text .urgent {
+    text-color: @base;
+}

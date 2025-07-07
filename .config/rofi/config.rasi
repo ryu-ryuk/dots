@@ -1,100 +1,12 @@
-@theme "~/.cache/wal/colors-rofi-dark.rasi"
-
 configuration {
-    modi:                        "drun";
-    font:                        "Hack Nerd Font 11";
-    show-icons:                  true;
-    drun-display-format:         "{name}";
-    hover-select:                true;
-    me-select-entry:             "MouseSecondary";
-    me-accept-entry:             "MousePrimary";
-    window-format:               "{w} · {c} · {t}";
-    dpi:                         1;
+    show-icons: true;
+
+    display-ssh:    "󰣀 ssh:";
+    display-run:    "󱓞 run:";
+    display-drun:   "󰣖 drun:";
+    display-window: "󱂬 window:";
+    display-combi:  "󰕘 combi:";
+    display-filebrowser: "󰉋 filebrowser:";
 }
 
-* {
-    border-color:                #FFFFFF10;
-    text-color:                  @foreground;
-    background-alt:              @selected-active-background;
-    selected:                    @selected-normal-background;
-    active:                      @selected-urgent-background;
-    urgent:                      @selected-normal-background;
-    text-selected:               @foreground;
-}
-
-window {
-    enabled:                     true;
-    fullscreen:                  false;
-    transparency:                "real";
-    cursor:                      "default";
-    spacing:                     0px;
-    border-radius:               10px;
-    location:                    center;
-    anchor:                      center;
-    width:                       70%;
-    background-color:            #0000001a;
-    border:                      2px;
-    border-color:                @border-color;
-}
-
-mainbox {
-    children:                    [ "inputbar", "listview" ];
-    background-color:            transparent;
-}
-
-inputbar {
-    background-color:            transparent;
-    padding:                     10px;
-    margin:                      10px;
-    children:                    [ "entry" ];
-    text-color:                  inherit;
-}
-
-entry {
-    placeholder:                 "search in me...";
-    padding:                     4px 8px;
-    text-color:                  inherit;
-    background-color:            transparent;
-}
-
-listview {
-    columns:                     3;
-    lines:                       6;
-    spacing:                     12px;
-    background-color:            transparent;
-    dynamic:                     true;
-    scrollbar:                   false;
-    border:                      0px;
-}
-
-element {
-    orientation:                 horizontal;
-    padding:                     5px;
-    spacing:                     5px;
-    border-radius:               20px;
-    cursor:                      pointer;
-    background-color:            #00000033;
-}
-
-element normal.normal,
-element alternate.normal {
-    background-color:            #00000033;
-}
-
-element selected.normal {
-    background-color:            @selected-urgent-background;
-    text-color:                  @text-selected;
-}
-
-element-icon {
-    size:                        1.4em;
-    padding:                     2px;
-    background-color:            transparent;
-}
-
-element-text {
-    font:                        "JetBrainsMono Nerd Font 9";
-    background-color:            transparent;
-    text-color:                  @text-color;
-}
-
+@theme "~/.config/rofi/m.rasi"
