@@ -1,0 +1,10 @@
+[Unit]
+Description=Battery Notify Script
+After=graphical.target
+
+[Service]
+ExecStart=/home/ryu/.config/scripts/battery_notify.sh
+Restart=always
+
+[Install]
+WantedBy=default.target
