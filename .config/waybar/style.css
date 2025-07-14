@@ -1,6 +1,18 @@
+@define-color base      #1e1e2e;
+@define-color mantle    #181825;
+@define-color surface0  #313244;
+@define-color surface1  #45475a;
+@define-color text      #cdd6f4;
+@define-color subtext   #a6adc8;
+@define-color accent    #89b4fa;
+@define-color red       #f38ba8;
+@define-color green     #a6e3a1;
+@define-color peach     #fab387;
+@define-color lavender  #b4befe;
+
 * {
     font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: normal;
     border: none;
     border-radius: 0;
@@ -9,68 +21,81 @@
 }
 
 window#waybar {
-    background: #000000;
-    color: #cdd6f4;
-    border: 1px solid #45475a;
+    background: @base;
+    color: @text;
+    border-top: 1px solid @surface0;
 }
 
-/* Workspaces */
+/* Common modules */
 #workspaces,
 #clock,
 #network,
 #bluetooth,
 #window {
     background: transparent;
-    color: #cdd6f4;
+    color: @text;
     padding: 0 8px;
 }
 
+/* Workspaces */
 #workspaces button {
     background: transparent;
-    color: #6c7086;
-    padding: 0 4px;
-    margin: 0 2px;
-    transition: all 0.3s ease;
+    padding: 0 6px;
+    margin: 0 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    color: @text;
 }
 
-#workspaces button.active {
-    color: #cdd6f4;
-    background: #313244;
+/* individual workspace colors */
+#workspaces button:nth-child(1) {
+    color: @red;
+}
+#workspaces button:nth-child(2) {
+    color: @green;
+}
+#workspaces button:nth-child(3) {
+    color: @peach;
+}
+#workspaces button:nth-child(4) {
+    color: @accent;
+}
+#workspaces button:nth-child(5) {
+    color: @lavender;
 }
 
+
+/* hover */
 #workspaces button:hover {
-    background: #45475a;
-    color: #cdd6f4;
+    background: @surface1;
+    color: @text;
 }
 
 /* Window title */
 #window {
-    color: #a6adc8;
+    color: @subtext;
     font-style: italic;
 }
 
-/* Network module */
-/* #network { */
-    /* color: #89b4fa; */
-/* } */
 
+/* Network */
+#network {
+    color: #89b4fa;
+}
 #network.disconnected {
     color: #f38ba8;
 }
-
 #network.ethernet {
     color: #a6e3a1;
 }
 
-/* Bluetooth module */
+/* Bluetooth */
 #bluetooth {
     color: #cba6f7;
 }
-
 #bluetooth.disabled {
     color: #6c7086;
 }
-
 #bluetooth.connected {
     color: #a6e3a1;
 }
@@ -81,25 +106,24 @@ window#waybar {
     font-weight: bold;
 }
 
-/* Tooltip styling */
+/* Tooltips */
 tooltip {
-    background: rgba(0, 0, 0, 0.95);
-    border: 1px solid #45475a;
+    background: #181825;
+    border: 1px solid #313244;
     border-radius: 8px;
-    padding: 8px;
+    padding: 6px;
 }
 
 tooltip label {
     color: #cdd6f4;
 }
 
-/* Calendar styling */
+/* Calendar (if used) */
 calendar {
-    background: #000000;
-    border-radius: 8px;
-    padding: 8px;
+    background: #1e1e2e;
+    border-radius: 6px;
+    padding: 6px;
 }
-
 calendar:selected {
     background: #313244;
     border-radius: 4px;
@@ -110,5 +134,12 @@ calendar:selected {
 #bluetooth:hover,
 #clock:hover {
     background: #313244;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+}
+
+#custom-separator {
+    color: #6c7086; /* subtext */
+    padding: 0 6px;
+    font-weight: bold;
 }

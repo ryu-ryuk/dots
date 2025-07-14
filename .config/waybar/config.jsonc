@@ -11,11 +11,17 @@
 	],
 	"modules-right": [
 		"network",
+		"custom/separator",
 		"bluetooth",
+		"custom/separator",
 		"battery",
+		"custom/separator",
 		"clock"
-		// "tray"
 	],
+	"custom/separator": {
+		"format": "│",
+		"tooltip": false
+	},
 	"hyprland/workspaces": {},
 	"hyprland/window": {
 		"format": "{title}",
@@ -59,7 +65,7 @@
 		"tooltip-format-wifi": "{essid} - {signalStrength}%",
 		"tooltip-format-ethernet": "Ethernet Connected",
 		"tooltip-format-disconnected": "No Connection",
-		"on-click": "~/.config/scripts/wifi-rofi.sh"
+		"on-click": "~/.config/rofi/assets/wifimenu"
 	},
 	"battery": {
 		"format": "{capacity}%",
