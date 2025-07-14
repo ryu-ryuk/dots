@@ -6,7 +6,7 @@ https://github.com/user-attachments/assets/74f36669-0e3f-4f8f-ae19-fc4aebc366db
 
 ---
 
-> [!WARNING]
+> [!IMPORTANT]
 > I will add install scripts and proper deps for the entire dotfiles overtime : )
 
 ---
@@ -16,6 +16,7 @@ https://github.com/user-attachments/assets/74f36669-0e3f-4f8f-ae19-fc4aebc366db
 #### Move the scripts directory to `.config/` and make sure your `wallpapers` dir to `~/Pictures/` .
 
 > [!IMPORTANT]
+> My neovim configuration: [repo](https://github.com/ryu-ryuk/nvim) 
 > You can also use my wallpapers that i have collected over time from this [github repo](https://github.com/ryu-ryuk/wallpapers).
 
 ---
