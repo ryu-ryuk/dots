@@ -56,5 +56,5 @@ apply_wal_theme() {
     fi
 }
 
-apply_wal_theme "$imgpath"
+# apply_wal_theme "$imgpath"
 

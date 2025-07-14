@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ICON_PATH="$HOME/.config/scripts/icons"
-VIDEO_DIR="$HOME/Videos"
+VIDEO_DIR="$HOME/Videos/records/"
 TIMESTAMP=$(date +%m-%d-%Y-%H:%M:%S)
 PID_FILE="/tmp/wf_recording.pid"
 AUDIO_PIPE="/tmp/audio_pipe.wav"
