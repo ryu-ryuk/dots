@@ -126,6 +126,7 @@ alias c='clear'
 alias cdsafe='cloudflared tunnel run safe'
 alias warp-on='~/.config/scripts/warp-on.sh'
 alias warp-off='~/.config/scripts/warp-off.sh'
+alias ryu-ssh='gcloud compute ssh instance-20250710-045922 --zone asia-south2-b --project smart-carving-465504-f2'
 
 
 # git aliases
@@ -138,7 +139,7 @@ alias gcm='git commit -m'
 # alias ls='eza -lh --time-style=long-iso -o --git'
 alias ls='eza --icons=auto --color=always --group-directories-first'
 alias l='eza -lha --icons=auto --color=always --time-style=long-iso -o --git --sort=modified --group-directories-first'
-alias t='eza --tree --icons=auto --color=always --level=2'
+alias t='eza --tree --icons=auto --color=always --level=4'
 alias lr='eza -lha --icons=auto --color=always --sort=modified --reverse'
 alias vim='nvim'
 alias vi='nvim'
@@ -181,3 +182,4 @@ export POP_SMTP_PASSWORD=hunter2
 
 export POP_FROM=meow@alokranjan.me
 export POP_SIGNATURE="from Alok Ranjan(https://alokranjan.me) :>"
+
