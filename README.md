@@ -25,5 +25,5 @@ https://github.com/user-attachments/assets/74f36669-0e3f-4f8f-ae19-fc4aebc366db
 ## dependencies:
 
 ```bash
-sudo pacman -S hyprpaper rofi jq libnotify findutils coreutils grep sed dunst
+sudo pacman -S swww rofi jq libnotify findutils coreutils grep sed swaync bc mpvpaper
 ```
