@@ -25,7 +25,7 @@ if [ ! -x "$CONFIG_DIR/switch-wall.sh" ]; then
 fi
 
 # Process and display wallpapers with shortened names
-imgpath=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | shuf | while read -r file; do
+imgpath=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) | shuf | while read -r file; do
     filename=$(basename "$file")
     short_name=$(echo "${filename%.*}" | cut -c 1-15)
     if [ "${#filename}" -gt 15 ]; then
@@ -55,6 +55,4 @@ apply_wal_theme() {
         exit 1
     fi
 }
-
-# apply_wal_theme "$imgpath"
 

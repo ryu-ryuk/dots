@@ -4,7 +4,7 @@ IMAGE_DIR="$HOME/Pictures/wallpapers"
 PLACEHOLDER_IMG="$IMAGE_DIR/sky.png"
 CHOOSER="Wallpaper selector"
 SET_SCR="$HOME/.config/scripts/switch-wall.sh"
-APPLY_WAL="$HOME/.config/scripts/apply_wal.sh" # for pywal
+APPLY_WAL="$HOME/.config/scripts/apply_wal.sh"
 
 exec 2>> ~/.cache/wallpaper_errors.log
 
