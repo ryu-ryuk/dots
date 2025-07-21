@@ -1,3 +1,161 @@
-/* @import '../../.cache/wal/colors-waybar.css'; */
 @import 'style/notifications.css';
-/* @import 'style/control-center.css'; */
+@import 'style/control-center.css';
+/*
+ * Catppuccin Mocha theme for swaync
+ * a compact, solid-color layout
+ * maintainer: ryu-ryuk
+ */
+
+/* === color palette (catppuccin mocha) === */
+@define-color mauve     #cba6f7;
+@define-color red       #f38ba8;
+@define-color green     #a6e3a1;
+@define-color blue      #89b4fa;
+@define-color text      #cdd6f4;
+@define-color subtext   #bac2de;
+@define-color surface0  #313244;
+@define-color surface1  #45475a;
+@define-color base      #1e1e2e;
+@define-color mantle    #181825;
+@define-color selected  #585b70; /* using surface2 for a subtle selection */
+@define-color urgent    @red;
+
+/* === global settings === */
+* {
+  all: unset;
+  font-family: "Ndot55", sans-serif; /* default body font */
+  font-size: 14px;
+  font-weight: bold;
+  color: @text;
+  transition: 200ms ease;
+}
+
+/* === main window === */
+#control-center {
+  background-color: @mantle; /* solid background */
+  border-radius: 12px;
+  border: 1px solid @surface0;
+  padding: 8px; /* gives content breathing room from the edge */
+}
+
+/* === unified widget styling === */
+.widget-box > * {
+  padding: 8px 10px;
+  border-bottom: 1px solid @surface0; /* separator line */
+}
+.widget-box > *:last-child {
+  border-bottom: none; /* no line on the last widget */
+}
+
+/* === title widget adjustments === */
+/* this specifically targets the title widget to shift it left */
+.widget-title {
+  padding-left: 2px;
+}
+.widget-title label,
+.summary {
+  font-family: "Ndot55Caps", sans-serif;
+  font-size: 16px;
+  color: @mauve;
+  font-weight: bold;
+}
+.widget-title button {
+  font-size: 12px;
+  font-weight: bold;
+  background-color: @surface0;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+.widget-title button:hover {
+  background-color: @selected;
+}
+
+/* === dnd (do not disturb) widget === */
+.widget-dnd {
+  font-family: "Ndot55Caps", sans-serif;
+  font-size: 14px;
+  color: @subtext;
+}
+.widget-dnd switch {
+  background-color: @surface0;
+  border: 1px solid @surface1;
+  border-radius: 10px;
+}
+.widget-dnd switch:checked {
+  background-color: @green;
+}
+.widget-dnd switch slider {
+  background-color: @text;
+  border-radius: 99px;
+  min-width: 14px;
+  min-height: 14px;
+}
+
+/* === mpris (media) widget === */
+.widget-mpris {
+  padding: 12px;
+}
+.widget-mpris .image {
+  min-width: 65px;
+  min-height: 65px;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+.widget-mpris .title {
+  font-family: "Ndot55Caps", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: @blue;
+}
+.widget-mpris .artist {
+  font-size: 13px;
+  color: @subtext;
+}
+.widget-mpris .buttons button {
+  padding: 6px;
+  border-radius: 99px;
+  color: @subtext;
+}
+.widget-mpris .buttons button:hover {
+  color: @text;
+  background-color: @selected;
+}
+
+/* === notifications === */
+.notification-row {
+  padding: 0;
+  border-radius: 8px; /* round the hover effect */
+  margin: 0 4px 8px 4px; /* t-r-b-l margins */
+}
+.notification-row:hover {
+  background-color: @base;
+}
+.notification-content {
+  padding: 8px; /* standardized padding */
+}
+.notification-row.critical {
+  border: 1px solid @urgent;
+}
+.notification-row.critical .summary {
+  color: @urgent;
+}
+.notification-action {
+  font-size: 13px;
+  font-weight: bold;
+  background-color: @surface0;
+  border: 1px solid @surface1;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin: 8px 4px 0 4px;
+}
+.notification-action:hover {
+  background-color: @selected;
+  border-color: @blue;
+}
+.close-button {
+  padding: 4px;
+  border-radius: 99px;
+}
+.close-button:hover {
+  background-color: @red;
+}
